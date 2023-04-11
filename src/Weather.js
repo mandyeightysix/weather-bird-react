@@ -1,71 +1,105 @@
 import React, { useState } from "react";
+import WeatherInfo from "./Weatherinfo";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
+export default function Weather(props) {
     const [weatherData, setWeatherData] = useState({ ready: false });
+    const [city, setCity] = useState(props.defaultCity);
     function handleResponse(response) {
         console.log(response.data);
         setWeatherData({
             ready: true,
             temperature: response.data.main.temp,
             humidity: response.data.main.humidity,
-            date: "Tuesday 08:26",
+            date: new Date(response.data.dt * 1000),
             description: response.data.weather[0].description,
-            iconUrl: 'http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png',
+            iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon}clear-sky-day.png`,
             wind: response.data.wind.speed,
             city: response.data.name
         })
     }
+
+    function search() {
+        const apiKey = "21d20dbb06095f793410f891f00e7748";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(handleResponse);
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        search(city);
+    }
+
+    function handleCityChange(event) {
+        setCity(event.target.value);
+    }
+
     if (weatherData.ready) {
         return (
             <div className="Weather">
-                <div className="row">
-                <div className="col-12">
-                    <div className="opacity-50">
-                    <h1 id="location">{weatherData.city}</h1>
+                    <div className="row opacity-50">
+                    <div className="col-3">
+                        <input
+                        className="btn btn-outline-danger mb-3"
+                        type="submit"
+                        value="Vancouver"
+                        id="vancouver"
+                        />
+                        </div>
+                    <div className="col-3">
+                        <input
+                        className="btn btn-outline-danger mb-3"
+                        type="submit"
+                        value="Saskatoon"
+                        id="saskatoon"
+                        />
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-8">
-                    <div className="weather-temperature">
-                        <div className="temperature-container d-flex justify-content-end">
-                        <canvas width="52" height="52"></canvas>
-                        <img src="{weatherData.iconUrl}" alt="Sunny" id="icon" className="weather-icon" />
-                        <span className="temp" id="temperature">{Math.round(weatherData.temperature)}</span>
-                        <span className="units"
-                        ><a href="/" id="celsius-link" className="active">20°C</a>
-                        |
-                        <a href="/" id="fahrenheit-link">60°F</a></span>
+                    <div className="col-3">
+                        <input
+                        className="btn btn-outline-danger mb-3"
+                        type="submit"
+                        value="Montreal"
+                        id="montreal"
+                        />
                     </div>
+                    <div className="col-3">
+                        <input
+                        className="btn btn-outline-danger mb-3"
+                        type="submit"
+                        value="Halifax"
+                        id="halifax"
+                        />
                     </div>
-                </div>
-                </div>
-                <div className="row">
-                <div className="col-12">
-                    <div className="description-date">
-                    <ul>
-                        <li className="text-capitalized">
-                            <span id="date">{weatherData.date}</span>,
-                            <span id="description">{weatherData.description}</span>
-                        </li>
-                        <li>
-                            Humidity: <span id="humidity"></span>{weatherData.humidity}, Wind:
-                            <span id="wind">{weatherData.wind}</span>Km/H
-                        </li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
             </div>
-            </div>
+                <form id="search-form" className="mb-3" onSubmit={handleSubmit}>
+                    <div className="row">
+                        <div className="col-8">
+                            <input
+                            type="search"
+                            placeholder="Type in location..."
+                            className="form-control"
+                            id="city-input"
+                            autocomplete="off"
+                            onChange={handleCityChange}
+                            />
+                        </div>
+                        <div className="col-2">
+                            <div className="opacity-50">
+                            <input className="btn btn-outline-danger" type="submit" />
+                            </div>
+                        </div>
+                        <div className="col-2">
+                            <div className="opacity-50">
+                            <button id="geo-location" className="btn btn-outline-danger">
+                            <i className="fa-solid fa-location-arrow"></i>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+                <WeatherInfo data={weatherData} />
+                </div>
         );
-    } else {
-    const apiKey = "0ceco9a849f99808bt5f98c429a1bbe3";
-    let city = "Hamilton";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
-    return "loading...";
-    }
+    } 
 }

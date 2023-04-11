@@ -1,5 +1,4 @@
 import React from "react";
-import Search from "./Search";
 import Weather from "./Weather";
 import Forecast from "./Forecast";
 
@@ -9,14 +8,13 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Search />
-      <Weather />
+      <Weather defaultCity="Hamilton" />
       <Forecast />
       <footer>
-        This project was coded by Amanda Pepin and is{" "}
-        <a href="https://github.com/mandyeightysix/weather-bird-react" target="_blank" rel="noreferrer">
-          open-sourced on GitHub
-        </a>
+        {/* This project was coded by Amanda Pepin and is{" "} */}
+        {/* <a href="https://github.com/mandyeightysix/weather-bird-react" target="_blank" rel="noreferrer"> */}
+          {/* open-sourced on GitHub */}
+        {/* </a> */}
         </footer>
         </div>
     </div>
