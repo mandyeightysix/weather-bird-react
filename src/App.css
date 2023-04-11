@@ -1,5 +1,7 @@
-.App {
+.App .container {
   text-align: center;
+  font-family: "Radio Canada", sans-serif;
+  background: linear-gradient( 135deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100% );
 }
 
 .App-header {
