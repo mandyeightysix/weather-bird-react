@@ -7,6 +7,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <div class="weather-app-wrapper">
       <Weather defaultCity = "Hamilton" />
       <Forecast />
       <footer>
@@ -15,6 +16,7 @@ function App() {
           open-sourced on GitHub
         </a>
         </footer>
+    </div>
     </div>
   );
 }

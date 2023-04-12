@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./Weatherinfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import "./Weather.css";
 
@@ -14,7 +15,7 @@ export default function Weather(props) {
             humidity: response.data.main.humidity,
             date: new Date(response.data.dt * 1000),
             description: response.data.weather[0].description,
-            iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+            icon: response.data.weather[0].icon,
             wind: response.data.wind.speed,
             city: response.data.name
         })
@@ -38,10 +39,10 @@ export default function Weather(props) {
     if (weatherData.ready) {
         return (
             <div className="Weather">
-                <div class="row opacity-50">
+                <div class="row opacity-75">
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-danger mb-3"
+                        className="btn btn-outline-secondary mb-3"
                         type="submit"
                         value="Vancouver"
                         id="vancouver"
@@ -49,7 +50,7 @@ export default function Weather(props) {
                     </div>
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-danger mb-3"
+                        className="btn btn-outline-secondary mb-3"
                         type="submit"
                         value="Saskatoon"
                         id="saskatoon"
@@ -57,7 +58,7 @@ export default function Weather(props) {
                     </div>
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-danger mb-3"
+                        className="btn btn-outline-secondary mb-3"
                         type="submit"
                         value="Montreal"
                         id="montreal"
@@ -65,7 +66,7 @@ export default function Weather(props) {
                     </div>
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-danger mb-3"
+                        className="btn btn-outline-secondary mb-3"
                         type="submit"
                         value="Halifax"
                         id="halifax"
@@ -85,13 +86,13 @@ export default function Weather(props) {
                         />
                     </div>
                     <div className="col-2">
-                        <div className="opacity-50">
-                        <input className="btn btn-outline-danger" type="submit" />
+                        <div className="opacity-75">
+                        <input className="btn btn-outline-secondary" type="submit" />
                         </div>
                     </div>
                     <div className="col-2">
-                        <div className="opacity-50">
-                        <button id="geo-location" className="btn btn-outline-danger">
+                        <div className="opacity-75">
+                        <button id="geo-location" className="btn btn-outline-secondary">
                             <i className="fa-solid fa-location-arrow"></i>
                         </button>
                     </div>
@@ -99,6 +100,7 @@ export default function Weather(props) {
                 </div>
             </form>
                 <WeatherInfo data={weatherData} />
+                <WeatherForecast />
                 </div>
         );
     } else {

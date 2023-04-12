@@ -1,0 +1,66 @@
+.Weather canvas {
+    height: 64px;
+    width: 64px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.Weather h1 {
+    color: rgb(89, 86, 86);
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 48px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 2;
+}
+
+.Weather .currentLocation {
+    margin-top: 50px;
+}
+
+.Weather .weather-temperature {
+    margin-top: 20px;
+    margin-right: -20px;
+}
+
+.Weather .temp {
+    font-size: 48px;
+    padding-top: 20px;
+    color: rgb(89, 86, 86);
+    opacity: 0.5;
+}
+
+.Weather .units  {
+    box-sizing: border-box;
+    color: rgb(89, 86, 86);
+    display: inline;
+    font-size: 13px;
+    font-weight: 400;
+    height: auto;
+    line-height: 88px;
+    position: relative;
+    text-align: left;
+    text-size-adjust: 100%;
+    top: -22px;
+    opacity: 0.5;
+}
+
+.Weather li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Weather .description-date {
+    text-align: center;
+    color: rgb(89, 86, 86);
+    opacity: 0.8;
+}
+
+.Weather .text-capitalize {
+    display: inline-flex;
+    gap: 10px;
+    text-transform: capitalize;
+}
