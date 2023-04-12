@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherInfo(props) {
     return (
@@ -16,11 +17,7 @@ export default function WeatherInfo(props) {
                         <div className="temperature-container d-flex justify-content-end">
                         <canvas width="52" height="52"></canvas>
                         <img src={props.data.iconUrl} alt="Sunny" id="icon" className="weather-icon" />
-                        <span className="temp" id="temperature">{Math.round(props.data.temperature)}</span>{" "}
-                        <span className="units"
-                        ><a href="/" id="celsius-link" className="active">20°C</a>
-                        |
-                        <a href="/" id="fahrenheit-link">60°F</a></span>
+                        <WeatherTemperature celsius={props.data.temperature} />
                     </div>
                     </div>
                 </div>
@@ -30,7 +27,8 @@ export default function WeatherInfo(props) {
                     <div className="description-date">
                     <ul>
                         <li>
-                            <span id="date"><FormattedDate date={props.data.date} /></span>,{" "}
+                            <FormattedDate date={props.data.date}/>
+                            <span id="date">{props.data.date.getDay()}</span>,{" "}
                             <span className="text-capitalize" id="description">{props.data.description}</span>
                         </li>
                         <li>
@@ -41,7 +39,7 @@ export default function WeatherInfo(props) {
                     </div>
                     </div>
                 </div>
-                </div>
-        </div>
+            </div>
+            </div>
     );
 }
