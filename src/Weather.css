@@ -32,7 +32,7 @@
     opacity: 0.5;
 }
 
-.Weather .units  {
+.Weather .unit {
     box-sizing: border-box;
     color: rgb(89, 86, 86);
     display: inline;
@@ -63,4 +63,8 @@
     display: inline-flex;
     gap: 10px;
     text-transform: capitalize;
+}
+
+.Weather .windSpeed {
+    font-size: smaller;
 }

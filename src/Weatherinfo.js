@@ -17,7 +17,7 @@ export default function WeatherInfo(props) {
                     <div className="weather-temperature">
                         <div className="temperature-container d-flex justify-content-end">
                         <canvas width="52" height="52"></canvas>
-                        <WeatherIcon code={props.data.icon} />
+                        <WeatherIcon code={props.data.icon} size={52}/>
                         <WeatherTemperature celsius={props.data.temperature} />
                     </div>
                     </div>
@@ -34,9 +34,8 @@ export default function WeatherInfo(props) {
                                 </span>,
                         </li>
                         <li>
-                            Humidity: <span id="humidity"></span>{props.data.humidity}% | Wind:
-                            <span id="wind">{props.data.wind}</span>Km/H
-                        </li>
+                            Humidity: <span id="humidity"></span>{props.data.humidity}% | Wind:{" "}
+                            <span id="wind">{Math.round(props.data.wind)}</span><span className="windSpeed">{" "}km/h</span>                        </li>
                         </ul>
                     </div>
                     </div>
