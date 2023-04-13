@@ -43,7 +43,7 @@ export default function Weather(props) {
                 <div class="row opacity-75">
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-secondary mb-3"
+                        className="btn btn-warning mb-3"
                         type="submit"
                         value="Vancouver"
                         id="vancouver"
@@ -51,7 +51,7 @@ export default function Weather(props) {
                     </div>
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-secondary mb-3"
+                        className="btn btn-warning mb-3"
                         type="submit"
                         value="Saskatoon"
                         id="saskatoon"
@@ -59,7 +59,7 @@ export default function Weather(props) {
                     </div>
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-secondary mb-3"
+                        className="btn btn-warning mb-3"
                         type="submit"
                         value="Montreal"
                         id="montreal"
@@ -67,7 +67,7 @@ export default function Weather(props) {
                     </div>
                     <div className="col-3">
                     <input
-                        className="btn btn-outline-secondary mb-3"
+                        className="btn btn-warning mb-3"
                         type="submit"
                         value="Halifax"
                         id="halifax"
@@ -88,12 +88,12 @@ export default function Weather(props) {
                     </div>
                     <div className="col-2">
                         <div className="opacity-75">
-                        <input className="btn btn-outline-secondary" type="submit" />
+                        <input className="btn btn-warning" type="submit" />
                         </div>
                     </div>
                     <div className="col-2">
                         <div className="opacity-75">
-                        <button id="geo-location" className="btn btn-outline-secondary">
+                        <button id="geo-location" className="btn btn-warning">
                             <i className="fa-solid fa-location-arrow"></i>
                         </button>
                     </div>

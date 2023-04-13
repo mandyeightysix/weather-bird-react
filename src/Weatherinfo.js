@@ -35,7 +35,8 @@ export default function WeatherInfo(props) {
                         </li>
                         <li>
                             Humidity: <span id="humidity"></span>{props.data.humidity}% | Wind:{" "}
-                            <span id="wind">{Math.round(props.data.wind)}</span><span className="windSpeed">{" "}km/h</span>                        </li>
+                            <span id="wind">{Math.round(props.data.wind)}</span><span className="windSpeed">{" "}km/h</span>                        
+                        </li>
                         </ul>
                     </div>
                     </div>
